@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "bun build ./index.ts --target=bun --minify --outfile=handler.js",
-    "compile": "bun run build --outfile=handler --compile"
+    "compile": "bun run build --outfile=handler --compile",
+    "up": "cd ../ && DOCKER_DEFAULT_PLATFORM=linux/amd64 faas-cli up -f eas.yml",
+    "docker:build": "docker build -t faas-bun --build-arg SRC=. -f ../template/bun/Dockerfile .",
+    "docker:run": "docker run -p 3000:8080 faas-bun"
   },
   "devDependencies": {
     "bun-types": "^0.6.0"
