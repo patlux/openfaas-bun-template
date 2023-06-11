@@ -2,10 +2,15 @@
   "name": "openfaas-bun-function",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "build": "bun build ./index.ts --target=bun --minify --outfile=handler.js",
+    "compile": "bun run build --outfile=handler --compile"
+  },
   "devDependencies": {
     "bun-types": "^0.6.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
-  }
+  },
+  "dependencies": {}
 }

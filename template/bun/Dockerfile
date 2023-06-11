@@ -1,9 +1,11 @@
 FROM ghcr.io/openfaas/of-watchdog:0.9.11 as watchdog
 FROM oven/bun:0.6.8 as builder
 
-WORKDIR /app
+WORKDIR /app/function
+COPY function ./
+RUN bun install
 
-COPY function ./function
+WORKDIR /app
 RUN bun build ./function/index.ts --outfile=handler --target=bun --minify --compile
 
 FROM debian:11.6-slim as runner

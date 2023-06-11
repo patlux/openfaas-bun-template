@@ -20,6 +20,3 @@ faas-cli up -f my-fancy-bun.yml
 2. Install [openfaas-cli](https://github.com/openfaas/faas-cli) on your local machine
 3. Login into your server with faas-cli
 4. Follow the instructions in "Usage"
-
-
-
