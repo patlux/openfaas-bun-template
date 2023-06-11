@@ -4,16 +4,14 @@ FROM oven/bun:0.6.8 as builder
 WORKDIR /app/function
 COPY function ./
 RUN bun install
-
-WORKDIR /app
-RUN bun build ./function/index.ts --outfile=handler --target=bun --minify --compile
+RUN bun run compile --outfile=./handler
 
 FROM debian:11.6-slim as runner
 
 WORKDIR /app
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
-COPY --from=builder /app/handler ./
+COPY --from=builder /app/function/handler ./
 
 ENV fprocess="./handler"
 ENV mode="http"
