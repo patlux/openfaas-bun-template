@@ -1,0 +1,3 @@
+language: bun
+fprocess: ./handler
+welcome_message: Welcome to bun!
