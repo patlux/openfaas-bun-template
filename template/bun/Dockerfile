@@ -7,9 +7,11 @@ WORKDIR /app/function
 COPY ${SRC} ./
 
 RUN bun install
-RUN bun run compile --outfile=./handler
+RUN bun run build --outfile=./handler.js
 
 FROM debian:11.6-slim as runner
+
+COPY --from=build /usr/local/bin/bun /usr/local/bin/bun
 
 RUN addgroup --system app && adduser app --system --ingroup app
 RUN chown app /home/app
@@ -19,9 +21,9 @@ USER app
 WORKDIR /home/app
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
-COPY --from=build /app/function/handler ./
+COPY --from=build /app/function/handler.js ./
 
-ENV fprocess="./handler"
+ENV fprocess="bun run ./handler.js"
 ENV mode="http"
 ENV upstream_url="http://localhost:3000"
 
