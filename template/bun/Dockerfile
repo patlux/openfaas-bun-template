@@ -1,5 +1,5 @@
 FROM ghcr.io/openfaas/of-watchdog:0.9.11 as watchdog
-FROM oven/bun:0.6.8 as build
+FROM oven/bun:0.6.9 as build
 
 ARG SRC=function
 

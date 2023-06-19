@@ -8,7 +8,7 @@
     "compile": "bun run build --outfile=handler --compile"
   },
   "devDependencies": {
-    "bun-types": "^0.6.0"
+    "bun-types": "^0.6.9"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
