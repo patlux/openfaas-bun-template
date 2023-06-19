@@ -1,10 +1,10 @@
 {
   "name": "openfaas-bun-function",
-  "module": "index.ts",
+  "module": "handler.ts",
   "type": "module",
   "scripts": {
-    "dev": "bun run --hot ./index.ts",
-    "build": "bun build ./index.ts --target=bun --minify --outfile=handler.js",
+    "dev": "bun run --hot ./handler.ts",
+    "build": "bun build ./handler.ts --target=bun --minify --outfile=handler.js",
     "compile": "bun run build --outfile=handler --compile"
   },
   "devDependencies": {
