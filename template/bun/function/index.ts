@@ -1,7 +1,5 @@
 import type { Server, Serve } from 'bun'
 
-console.log('Hello via Bun!')
-
 export const bunServeOptions: Serve = {
   port: 3000,
   fetch: (request: Request) => {
