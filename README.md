@@ -23,10 +23,10 @@ faas-cli up -f my-fancy-bun.yml
 # At the end your folder should look like the following:
 ~/dev/faas
 ├── my-fancy-bun
-│   ├── README.md
-│   ├── bun.lockb
-│   ├── index.ts
+│   ├── .gitignore
+│   ├── handler.ts
 │   ├── package.json
+│   ├── README.md
 │   └── tsconfig.json
 ├── my-fancy-bun.yml
 └── template
