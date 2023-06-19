@@ -1,5 +1,5 @@
 FROM ghcr.io/openfaas/of-watchdog:0.9.11 as watchdog
-FROM oven/bun:0.6.8 as builder
+FROM oven/bun:0.6.8 as build
 
 ARG SRC=function
 
@@ -11,10 +11,15 @@ RUN bun run compile --outfile=./handler
 
 FROM debian:11.6-slim as runner
 
-WORKDIR /app
+RUN addgroup --system app && adduser app --system --ingroup app
+RUN chown app /home/app
+
+USER app
+
+WORKDIR /home/app
 
 COPY --from=watchdog /fwatchdog /usr/bin/fwatchdog
-COPY --from=builder /app/function/handler ./
+COPY --from=build /app/function/handler ./
 
 ENV fprocess="./handler"
 ENV mode="http"
