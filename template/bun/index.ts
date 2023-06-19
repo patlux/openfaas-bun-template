@@ -4,7 +4,7 @@ if (handler.port) {
   console.warn(`You specified "port" in your handler. This will be ignored.`)
 }
 
-export const bunServeOptions = {
+export default {
   ...handler,
   port: 3000,
 }
